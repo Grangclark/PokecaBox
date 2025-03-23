@@ -9,7 +9,8 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
-
+    
+    // 残してても問題なさそうなので、残しておく
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
