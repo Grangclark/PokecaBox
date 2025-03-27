@@ -21,11 +21,14 @@ struct CardListView: View {
         NavigationStack {
             List {
                 ForEach(cards) { card in
-                    VStack(alignment: .leading) {
-                        Text(card.name ?? "カード名なし").font(.headline)
-                        Text("カード番号: \(card.cardNumber ?? "-") | 所持枚数: \(card.quantity)")
-                            .font(.subheadline)
-                        Text("illus. \(card.illustrator ?? "-")").font(.caption)
+                    // 一覧から編集画面への遷移（CardListView.swift内）
+                    NavigationLink(destination: CardEditView(card: card)) {
+                        VStack(alignment: .leading) {
+                            Text(card.name ?? "カード名なし").font(.headline)
+                            Text("カード番号: \(card.cardNumber ?? "-") | 所持枚数: \(card.quantity)")
+                                .font(.subheadline)
+                            Text("illus. \(card.illustrator ?? "-")").font(.caption)
+                        }
                     }
                 }
                 .onDelete(perform: deleteCards)
@@ -56,6 +59,7 @@ struct CardListView: View {
         }
     }
 }
+
 
 struct CardListView_Previews: PreviewProvider {
     static var previews: some View {
