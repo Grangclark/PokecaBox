@@ -42,6 +42,7 @@ struct CardAddView: View {
                     TextField("ワザ名・ダメージ等", text: $attacks)
                     TextField("カード説明（任意）", text: $descriptionText)
                     TextField("イラストレーター", text: $illustrator)
+                        .autocapitalization(.none) // ←これを追加
                     TextField("所持枚数", text: $quantity).keyboardType(.numberPad)
                 }
                 
