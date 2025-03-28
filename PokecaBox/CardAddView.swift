@@ -11,6 +11,10 @@ struct CardAddView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
+    // カテゴリーを追加
+    @State private var category = "ポケモン"
+    let categories = ["ポケモン", "トレーナーズ", "エネルギー"]
+    
     @State private var name = ""
     @State private var cardNumber = ""
     @State private var series = ""
@@ -24,9 +28,31 @@ struct CardAddView: View {
     @State private var illustrator = ""
     @State private var quantity = "1"
     
+    // add column
+    @State private var evolutionStage = ""
+    @State private var evolutionDescription = ""
+    @State private var specialDescription = ""
+    @State private var nationalDexDescription = ""
+    @State private var attack1 = ""
+    @State private var attack2 = ""
+    @State private var weakness = ""
+    @State private var resistance = ""
+    @State private var retreatCost = ""
+    @State private var expansionMark = ""
+    @State private var regulationMark = ""
+    
     var body: some View {
         NavigationStack {
             Form {
+                Section("カードカテゴリー") {
+                    Picker("カテゴリー", selection: $category) {
+                        ForEach(categories, id: \.self) { cat in
+                            Text(cat)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
                 Section("カード基本情報") {
                     TextField("カード名", text: $name)
                     TextField("カード番号", text: $cardNumber)
@@ -41,9 +67,34 @@ struct CardAddView: View {
                     TextField("特性（任意）", text: $ability)
                     TextField("ワザ名・ダメージ等", text: $attacks)
                     TextField("カード説明（任意）", text: $descriptionText)
+                }
+                
+                Section("共通情報") {
                     TextField("イラストレーター", text: $illustrator)
                         .autocapitalization(.none) // ←これを追加
                     TextField("所持枚数", text: $quantity).keyboardType(.numberPad)
+                }
+                
+                // カテゴリーによって表示を切り替える
+                if category == "ポケモン" {
+                    Section("ポケモン専用情報") {
+                        TextField("進化マーク（任意）", text: $evolutionStage)
+                        TextField("進化説明文（任意）", text: $evolutionDescription)
+                        TextField("ワザ名・エネルギー・ダメージ①", text: $attack1)
+                        TextField("ワザ名・エネルギー・ダメージ②（任意）", text: $attack2)
+                        TextField("弱点（任意）", text: $weakness)
+                        TextField("抵抗力（任意）", text: $resistance)
+                        TextField("にげる（任意）", text: $retreatCost)
+                        TextField("全国図鑑説明文（任意）", text: $nationalDexDescription)
+                    }
+                } else if category == "トレーナーズ" {
+                    Section("トレーナーズ専用情報") {
+                        TextField("特殊説明文（任意）", text: $specialDescription)
+                    }
+                } else if category == "エネルギー" {
+                    Section("エネルギー専用情報") {
+                        // エネルギー特有の入力フィールド（あれば）
+                    }
                 }
                 
                 Button("カード登録") {
