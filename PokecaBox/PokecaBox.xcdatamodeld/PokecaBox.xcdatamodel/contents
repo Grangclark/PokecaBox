@@ -2,19 +2,31 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21H1320" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="class">
         <attribute name="ability" optional="YES" attributeType="String"/>
+        <attribute name="attack1" optional="YES" attributeType="String"/>
+        <attribute name="attack2" optional="YES" attributeType="String"/>
         <attribute name="attacks" attributeType="String"/>
         <attribute name="cardNumber" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="evolutionDescription" optional="YES" attributeType="String"/>
+        <attribute name="evolutionStage" optional="YES" attributeType="String"/>
         <attribute name="expansion" attributeType="String"/>
+        <attribute name="expansionMark" optional="YES" attributeType="String"/>
         <attribute name="hp" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="illustrator" attributeType="String"/>
         <attribute name="imagePath" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="nationalDexDescription" optional="YES" attributeType="String"/>
         <attribute name="quantity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rarity" attributeType="String"/>
+        <attribute name="regulationMark" optional="YES" attributeType="String"/>
+        <attribute name="resistance" optional="YES" attributeType="String"/>
+        <attribute name="retreatCost" optional="YES" attributeType="String"/>
         <attribute name="series" attributeType="String"/>
+        <attribute name="specialDescription" optional="YES" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
+        <attribute name="weakness" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
