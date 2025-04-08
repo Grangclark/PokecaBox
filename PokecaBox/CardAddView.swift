@@ -10,33 +10,43 @@ import SwiftUI
 struct CardAddView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    
-    // カテゴリーを追加
-    @State private var category = "ポケモン"
-    let categories = ["ポケモン", "トレーナーズ", "エネルギー"]
-    
+        
     @State private var name = ""
     @State private var cardNumber = ""
     @State private var series = ""
     @State private var expansion = ""
+
+    // カテゴリーを追加
+    @State private var category = "ポケモン"
+    let categories = ["ポケモン", "トレーナーズ", "エネルギー"]
+
     @State private var rarity = ""
+    
+    // createdAt はシステム側で自動的に記録される
+
+    @State private var quantity = 0
     @State private var type = ""
-    @State private var hp = ""
+    @State private var hp = 0
     @State private var ability = ""
-    @State private var attacks = ""
     @State private var descriptionText = ""
+    @State private var imagePath = ""
     @State private var illustrator = ""
-    @State private var quantity = "1"
     
     // add column
     @State private var evolutionStage = ""
     @State private var evolutionDescription = ""
     @State private var specialDescription = ""
     @State private var nationalDexDescription = ""
-    @State private var attack1 = ""
-    @State private var attack2 = ""
-    @State private var weakness = ""
-    @State private var resistance = ""
+    @State private var attackName1 = ""
+    @State private var attackEnergy1 = ""
+    @State private var attackDamege1 = ""
+    @State private var attackName2 = ""
+    @State private var attackEnergy2 = ""
+    @State private var attackDamege2 = ""
+    @State private var weaknessType = ""
+    @State private var weaknessAmount = ""
+    @State private var resistanceType = ""
+    @State private var resistanceAmount = ""
     @State private var retreatCost = ""
     @State private var expansionMark = ""
     @State private var regulationMark = ""
