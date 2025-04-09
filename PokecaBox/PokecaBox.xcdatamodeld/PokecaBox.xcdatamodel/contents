@@ -9,12 +9,14 @@
         <attribute name="attackName1" optional="YES" attributeType="String"/>
         <attribute name="attackName2" optional="YES" attributeType="String"/>
         <attribute name="attacks" attributeType="String"/>
+        <attribute name="basicEnergytypes" optional="YES" attributeType="String"/>
         <attribute name="cardNumber" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="evolutionDescription" optional="YES" attributeType="String"/>
         <attribute name="evolutionStage" optional="YES" attributeType="String"/>
+        <attribute name="expansion" optional="YES" attributeType="String"/>
         <attribute name="expansionMark" optional="YES" attributeType="String"/>
         <attribute name="hp" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="illustrator" attributeType="String"/>
@@ -29,6 +31,8 @@
         <attribute name="retreatCost" optional="YES" attributeType="String"/>
         <attribute name="series" attributeType="String"/>
         <attribute name="specialDescription" optional="YES" attributeType="String"/>
+        <attribute name="trainersCategory" optional="YES" attributeType="String"/>
+        <attribute name="trainersEffect" optional="YES" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="weaknessAmount" optional="YES" attributeType="String"/>
         <attribute name="weaknessType" optional="YES" attributeType="String"/>
