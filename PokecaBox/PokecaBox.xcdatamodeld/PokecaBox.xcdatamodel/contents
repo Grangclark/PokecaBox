@@ -8,7 +8,6 @@
         <attribute name="attackEnergy2" optional="YES" attributeType="String"/>
         <attribute name="attackName1" optional="YES" attributeType="String"/>
         <attribute name="attackName2" optional="YES" attributeType="String"/>
-        <attribute name="attacks" attributeType="String"/>
         <attribute name="basicEnergytypes" optional="YES" attributeType="String"/>
         <attribute name="cardNumber" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="String"/>

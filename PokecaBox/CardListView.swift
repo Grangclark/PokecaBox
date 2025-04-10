@@ -44,7 +44,7 @@ struct CardListView: View {
                 }
             }
             .sheet(isPresented: $showAddView) {
-                CardAddView()
+                PokecaAddView()
                     .environment(\.managedObjectContext, viewContext)
             }
         }

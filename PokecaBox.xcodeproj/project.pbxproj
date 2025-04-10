@@ -17,7 +17,7 @@
 		6E2B45E02D8DB51C007EE511 /* PokecaBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B45DF2D8DB51C007EE511 /* PokecaBoxTests.swift */; };
 		6E2B45EA2D8DB51C007EE511 /* PokecaBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B45E92D8DB51C007EE511 /* PokecaBoxUITests.swift */; };
 		6E2B45EC2D8DB51C007EE511 /* PokecaBoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B45EB2D8DB51C007EE511 /* PokecaBoxUITestsLaunchTests.swift */; };
-		6ED07EAD2D9050E200F7F511 /* CardAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED07EAC2D9050E200F7F511 /* CardAddView.swift */; };
+		6E59162F2DA7E1F90002DAD3 /* PokecaAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59162E2DA7E1F90002DAD3 /* PokecaAddView.swift */; };
 		6EF787742D93016300C10DDE /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF787732D93016300C10DDE /* CardListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		6E2B45E52D8DB51C007EE511 /* PokecaBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokecaBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2B45E92D8DB51C007EE511 /* PokecaBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokecaBoxUITests.swift; sourceTree = "<group>"; };
 		6E2B45EB2D8DB51C007EE511 /* PokecaBoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokecaBoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		6ED07EAC2D9050E200F7F511 /* CardAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAddView.swift; sourceTree = "<group>"; };
+		6E59162E2DA7E1F90002DAD3 /* PokecaAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokecaAddView.swift; sourceTree = "<group>"; };
 		6EF787732D93016300C10DDE /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				6E2B45C92D8DB514007EE511 /* PokecaBoxApp.swift */,
+				6E59162E2DA7E1F90002DAD3 /* PokecaAddView.swift */,
 				6E2B45CB2D8DB514007EE511 /* ContentView.swift */,
-				6ED07EAC2D9050E200F7F511 /* CardAddView.swift */,
 				6E24EED62D95B4C8004E09AB /* CardEditView.swift */,
 				6EF787732D93016300C10DDE /* CardListView.swift */,
 				6E2B45CD2D8DB51B007EE511 /* Assets.xcassets */,
@@ -272,12 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ED07EAD2D9050E200F7F511 /* CardAddView.swift in Sources */,
 				6E24EED72D95B4C8004E09AB /* CardEditView.swift in Sources */,
 				6E2B45D32D8DB51B007EE511 /* Persistence.swift in Sources */,
 				6E2B45CC2D8DB514007EE511 /* ContentView.swift in Sources */,
 				6E2B45D62D8DB51B007EE511 /* PokecaBox.xcdatamodeld in Sources */,
 				6EF787742D93016300C10DDE /* CardListView.swift in Sources */,
+				6E59162F2DA7E1F90002DAD3 /* PokecaAddView.swift in Sources */,
 				6E2B45CA2D8DB514007EE511 /* PokecaBoxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

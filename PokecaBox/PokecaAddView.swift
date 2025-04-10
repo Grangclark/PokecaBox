@@ -1,13 +1,13 @@
 //
-//  CardAddView.swift
+//  PokecaAddView.swift
 //  PokecaBox
 //
-//  Created by 長橋和敏 on 2025/03/23.
+//  Created by 長橋和敏 on 2025/04/10.
 //
 
 import SwiftUI
 
-struct CardAddView: View {
+struct PokecaAddView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
         
@@ -18,15 +18,15 @@ struct CardAddView: View {
 
     // カテゴリーを追加
     @State private var category = "ポケモン"
-    let categories = ["ポケモン", "エネルギー", "トレーナーズ", "特別なカード"]
+    let categories = ["ポケモン", "特別なカード", "トレーナーズ", "エネルギー"]
 
     @State private var rarity = ""
     
     // createdAt はシステム側で自動的に記録される
 
-    @State private var quantity: String = "0"
+    @State private var quantity: String = ""
     @State private var type = ""
-    @State private var hp: String = "0"
+    @State private var hp: String = ""
     @State private var ability = ""
     @State private var descriptionText = ""
     @State private var imagePath = ""
@@ -37,23 +37,26 @@ struct CardAddView: View {
     @State private var evolutionDescription = ""
     @State private var specialDescription = ""
     @State private var nationalDexDescription = ""
-    @State private var attackName1 = ""
-    @State private var attackEnergy1 = ""
-    @State private var attackDamage1 = ""
-    @State private var attackName2 = ""
-    @State private var attackEnergy2 = ""
-    @State private var attackDamage2 = ""
     @State private var weaknessType = ""
     @State private var weaknessAmount = ""
     @State private var resistanceType = ""
-    @State private var resistanceAmount = ""
-    @State private var retreatCost = ""
+
     @State private var expansionMark = ""
     @State private var regulationMark = ""
     @State private var trainersCategory = ""
     @State private var trainersEffect = ""
     @State private var basicEnergytypes = ""
     
+    @State private var resistanceAmount = ""
+    @State private var retreatCost = ""
+    
+    @State private var attackName1 = ""
+    @State private var attackEnergy1 = ""
+    @State private var attackDamage1 = ""
+    @State private var attackName2 = ""
+    @State private var attackEnergy2 = ""
+    @State private var attackDamage2 = ""
+
     var body: some View {
         NavigationStack {
             Form {
@@ -72,13 +75,13 @@ struct CardAddView: View {
                     TextField("シリーズ名", text: $series)
                     TextField("拡張パック名", text: $expansion)
                     TextField("レア度", text: $rarity)
-                    TextField("エキスパンションマーク", text: $expansionMark)
+                    TextField("エキスパンションマーク", text: $expansionMark).autocapitalization(.none)
                     TextField("レギュレーションマーク", text: $regulationMark)
                     TextField("カード説明文", text: $descriptionText)
                 }
                 
                 Section("共通情報") {
-                    TextField("イラストレーター", text: $illustrator).autocapitalization(.none) // ←これを追加
+                    TextField("イラストレーター", text: $illustrator).autocapitalization(.none) // ←先頭小文字はこれを追加
                     TextField("所持枚数", text: $quantity).keyboardType(.numberPad)
                 }
                 
@@ -92,24 +95,45 @@ struct CardAddView: View {
                         TextField("進化説明文（任意）", text: $evolutionDescription)
                         TextField("特殊説明文（任意）", text: $specialDescription)
                         TextField("全国図鑑説明文（任意）", text: $nationalDexDescription)
+                        TextField("弱点の種類（任意）", text: $weaknessType)
+                        TextField("弱点の倍数（任意）", text: $weaknessAmount)
+                        // 以下のカラムはどうしても実行できない
+                        // Xcodeの不可解なバグで、1つのSectionにまとめるとエラーになるため
+                        // 「ポケモン専用情報」と「ポケモン補足情報」を分割している
+                        // 将来的に再検討予定（2025年04月10日時点）
+                        // TextField("抵抗エネルギーの枚数（任意）", text: $resistanceAmount)
+                        // TextField("にげる（任意）", text: $retreatCost)
+                        // TextField("ワザ名１", text: $attackName1)
+                        // TextField("必要エネルギー１", text: $attackEnergy1)
+                        // TextField("ダメージ１", text: $attackDamage1)
+                        // TextField("ワザ名２", text: $attackName2)
+                        // TextField("必要エネルギー２", text: $attackEnergy2)
+                        // TextField("ダメージ２", text: $attackDamage2)
+                    }
+                }
+                
+                if category == "ポケモン" || category == "特別なカード" {
+                    Section("ポケモン補足情報") {
+                        TextField("抵抗エネルギーのタイプ（任意）", text: $resistanceType)
+                        TextField("抵抗エネルギーの枚数（任意）", text: $resistanceAmount)
+                        TextField("にげる（任意）", text: $retreatCost)
                         TextField("ワザ名１", text: $attackName1)
                         TextField("必要エネルギー１", text: $attackEnergy1)
                         TextField("ダメージ１", text: $attackDamage1)
                         TextField("ワザ名２", text: $attackName2)
                         TextField("必要エネルギー２", text: $attackEnergy2)
                         TextField("ダメージ２", text: $attackDamage2)
-                        TextField("弱点の種類（任意）", text: $weaknessType)
-                        TextField("弱点の枚数（任意）", text: $weaknessAmount)
-                        TextField("抵抗エネルギーのタイプ（任意）", text: $resistanceType)
-                        TextField("抵抗エネルギーの枚数（任意）", text: $resistanceAmount)
-                        TextField("にげる（任意）", text: $retreatCost)
                     }
-                } else if category == "トレーナーズ" {
+                }
+                
+                if category == "トレーナーズ" {
                     Section("トレーナーズ専用情報") {
                         TextField("トレーナーズカテゴリー", text: $trainersCategory)
                         TextField("トレーナーズ効果", text: $trainersEffect)
                     }
-                } else if category == "エネルギー" {
+                }
+                
+                if category == "エネルギー" {
                     Section("エネルギー専用情報") {
                         // エネルギー特有の入力フィールド（あれば）
                         TextField("基本エネルギータイプ", text: $basicEnergytypes)
@@ -175,8 +199,8 @@ struct CardAddView: View {
     }
 }
 
-struct CardAddView_Previews: PreviewProvider {
+struct PokecaAddView_Previews: PreviewProvider {
     static var previews: some View {
-        CardAddView()
+        PokecaAddView()
     }
 }
