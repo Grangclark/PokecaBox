@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct PokecaAddView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -56,6 +57,10 @@ struct PokecaAddView: View {
     @State private var attackName2 = ""
     @State private var attackEnergy2 = ""
     @State private var attackDamage2 = ""
+    
+    // カード画像の保存・表示機能
+    @State private var selectedPhoto: PhotosPickerItem?
+    @State private var selectedUIImage: UIImage?
 
     var body: some View {
         NavigationStack {
@@ -151,6 +156,29 @@ struct PokecaAddView: View {
                     Button("キャンセル") { dismiss() }
                 }
             }
+        }
+        
+        // View内に追加
+        PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
+            HStack {
+                Image(systemName: "photo")
+                Text("カード画像を選択")
+            }
+            .onChange(of: selectedPhoto) { newItem in
+                Task {
+                    if let data = try? await newItem?.loadTransferable(type: Data.self),
+                       let uiImage = UIImage(data: data) {
+                        selectedUIImage = uiImage
+                    }
+                }
+            }
+        }
+        // 選択した画像のプレビュー表示（任意）
+        if let selectedUIImage {
+            Image(uiImage: selectedUIImage)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 200)
         }
     }
     
