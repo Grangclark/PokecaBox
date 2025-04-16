@@ -173,12 +173,31 @@ struct PokecaAddView: View {
                 }
             }
         }
+        
         // 選択した画像のプレビュー表示（任意）
         if let selectedUIImage {
             Image(uiImage: selectedUIImage)
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 200)
+        }
+    }
+    
+    // UIImageをDocumentsフォルダに保存し、ファイルパスを返す
+    private func saveImageToDocuments(uiImage: UIImage) -> String? {
+        guard let imageData = uiImage.jpegData(compressionQuality: 0.8) else { return nil
+        }
+        
+        let fileName = UUID().uuidString + ".jpg"
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask) [0]
+            .appendingPathComponent(fileName)
+        
+        do {
+            try imageData.write(to: fileURL)
+            return fileURL.path
+        } catch {
+            print("画像保存エラー: \(error.localizedDescription)")
+            return nil
         }
     }
     
