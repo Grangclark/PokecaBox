@@ -237,6 +237,11 @@ struct PokecaAddView: View {
         
         newCard.createdAt = Date()
         
+        // ★画像のパス保存処理を追加
+        if let selectedUIImage, let savedPath = saveImageToDocuments(uiImage: selectedUIImage) {
+            newCard.imagePath = savedPath
+        }
+        
         do {
             try viewContext.save()
             dismiss()
