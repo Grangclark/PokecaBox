@@ -24,6 +24,14 @@ struct CardListView: View {
                     // 一覧から編集画面への遷移（CardListView.swift内）
                     NavigationLink(destination: CardEditView(card: card)) {
                         VStack(alignment: .leading) {
+                            if let imagePath = card.imagePath,
+                               let uiImage = UIImage(contentsOfFile: imagePath) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 150)
+                                    .cornerRadius(8)
+                            }
                             Text(card.name ?? "カード名なし").font(.headline)
                             Text("カード番号: \(card.cardNumber ?? "-") | 所持枚数: \(card.quantity)")
                                 .font(.subheadline)
