@@ -15,6 +15,17 @@ struct CardEditView: View {
     
     var body: some View {
         Form {
+            // 画像があれば表示する
+            if let imagePath = card.imagePath,
+               let uiImage = UIImage(contentsOfFile: imagePath) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200)
+                    .cornerRadius(8)
+            }
+            
+            // 既存のフォーム要素（例）
             TextField("カード名", text: Binding($card.name, ""))
             TextField("カード番号", text: Binding($card.cardNumber, ""))
             TextField("イラストレーター", text: Binding($card.illustrator, ""))
